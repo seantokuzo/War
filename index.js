@@ -1,36 +1,27 @@
-function getNewDeck() {
+const cardsDiv = document.getElementById('cards-div')
+let deckId = ''
+
+function handleNewDeck() {
   fetch('https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/')
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      deckId = data.deck_id
+    })
 }
 
-document.getElementById('new-deck').addEventListener('click', getNewDeck)
+document.getElementById('new-deck').addEventListener('click', handleNewDeck)
 
-function timeOut() {
-  console.log('Hurry up bruh')
+function handleDrawCards() {
+  fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      data.cards.map((card, ind) => {
+        document.getElementById('cards-div').children[
+          ind
+        ].innerHTML = `<img class="card-img" src="${card.image}" alt="${card.code}">`
+      })
+    })
 }
 
-// setTimeout(timeOut, 2000)
-
-const people = [
-  { name: 'Jack', hasPet: true },
-  { name: 'Jill', hasPet: false },
-  { name: 'Alice', hasPet: true },
-  { name: 'Bob', hasPet: false },
-]
-
-const fn = (person) => person.hasPet
-
-function filterArray(array, callback) {
-  let filteredArray = []
-  for (let person of array) {
-    if (callback(person)) {
-      filteredArray.push(person)
-    }
-  }
-  return filteredArray
-}
-
-const peopleWithPets = filterArray(people, fn)
-
-console.log(peopleWithPets)
+document.getElementById('draw-cards').addEventListener('click', handleDrawCards)

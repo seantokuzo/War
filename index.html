@@ -2,10 +2,20 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <button id="new-deck">New Deck</button>
+    <main>
+      <button id="new-deck">New Deck</button>
+      <div id="cards-div">
+        <div class="card-slot"></div>
+        <div class="card-slot"></div>
+      </div>
+      <button id="draw-cards">Draw Cards</button>
+    </main>
     <script src="index.js" type="module"></script>
   </body>
 </html>
