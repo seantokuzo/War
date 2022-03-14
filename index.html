@@ -9,10 +9,17 @@
   </head>
   <body>
     <main>
-      <button id="new-deck">New Deck</button>
+      <div id="popup-div"></div>
+      <div class="top">
+        <button id="new-shuffle-deck">New Deck</button>
+        <h4 id="cards-remaining"></h4>
+      </div>
+      <h2 id="message">Game of War!</h2>
       <div id="cards-div">
+        <h4 id="compooter-score" class="score"></h4>
         <div class="card-slot"></div>
         <div class="card-slot"></div>
+        <h4 id="user-score" class="score"></h4>
       </div>
       <button id="draw-cards">Draw Cards</button>
     </main>
